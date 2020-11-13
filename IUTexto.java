@@ -1,7 +1,7 @@
 import java.util.Scanner;
 /**
  * Modela el interfaz para interactuar con el usuario
- * @author - 
+ * @author - Saúl Layos Iriso
  */
 public class IUTexto
 {
@@ -40,9 +40,37 @@ public class IUTexto
      */
     private void hacerSumasOctales()
     {
-        
-        
+        char repetir = 'S';
+        do{
+            boolean flagOctal = true;
+            boolean flagCifras = true;
 
+            Pantalla.borrarPantalla();
+
+            System.out.println("Dame numero1: ");
+            int num1 = teclado.nextInt();
+            System.out.println("Dame numero2: ");
+            int num2 = teclado.nextInt();
+           
+            if(Utilidades.estaEnOctal(num1) == false || Utilidades.estaEnOctal(num2) == false){
+                System.out.println("No son octales\n");
+                flagOctal = false;
+
+            }else if(Utilidades.contarCifras(num1) != Utilidades.contarCifras(num2)){
+                System.out.println("No tienen el mismo nº de cifras\n");
+                flagCifras = false;
+
+            }
+
+            if(flagOctal == true && flagCifras == true){
+                int resultado = calculadora.sumarEnOctal(num1, num2);
+                System.out.println("El resultado de la suma es: "+ resultado +"\n");
+            }
+
+            System.out.println("Deseas repetir la ejecucion? (S|s)");
+            repetir = teclado.next().charAt(0);
+
+        }while(repetir == 'S' || repetir == 's');
     }
 
     /**
@@ -53,7 +81,13 @@ public class IUTexto
 
     private void dibujarFiguras()
     {
-        
+        System.out.println("Altura de la figura?(1-10)");
+        int n = teclado.nextInt();
+        while (n < 1 || n > 10) {
+            System.out.println("Error, Altura de la figura?(1-10)");
+            n = teclado.nextInt();
+        }
+        pintor.dibujarFigura(n);
     }
-
 }
+    

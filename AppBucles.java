@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- *  @author - 
+ *  @author - Saúl Layos Iriso
  *  
  * Punto de entrada a la aplicación
  *  
